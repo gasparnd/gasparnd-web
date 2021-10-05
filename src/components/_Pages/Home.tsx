@@ -43,9 +43,16 @@ const HomePage = () => {
                 Node.Js, NestJs, Express and Cloud services like Google Cloud
                 Platform
               </span>
-              . Currently i work as FrontEn dev at ClveverIt Group, in the Labs
-              department, where we build experiments, own products and StartUps.
-              I worked for the clients area also
+              . Currently i work as FrontEnd dev at{" "}
+              <a
+                className="underline"
+                target="_blank"
+                href="https://www.cleveritgroup.com/"
+              >
+                ClaverIt Group
+              </a>
+              , in the Labs department, where we build experiments, own products
+              and StartUps. I worked for the clients area also
             </p>
           </div>
         )}
