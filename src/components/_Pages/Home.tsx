@@ -19,12 +19,11 @@ const HomePage = () => {
           <h2 className="text-4xl mt-4">
             FrontEnd Developer at{" "}
             <a
-              style={{ color: "#6a35ff" }}
-              className="underline"
+              className="underline text-primary"
               target="_blank"
               href="https://www.cleveritgroup.com/"
             >
-              ClaverIt Group
+              CleverIt Group
             </a>
           </h2>
         </section>
@@ -45,14 +44,14 @@ const HomePage = () => {
               </span>
               . Currently i work as FrontEnd dev at{" "}
               <a
-                className="underline"
+                className="underline text-primary"
                 target="_blank"
                 href="https://www.cleveritgroup.com/"
               >
-                ClaverIt Group
+                CleverIt Group
               </a>
               , in the Labs department, where we build experiments, own products
-              and StartUps. I worked for the clients area also
+              and StartUps. Also i worked for the clients area.
             </p>
           </div>
         )}
