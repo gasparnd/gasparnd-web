@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaGithub, FaLinkedin, FaTwitterSquare } from "react-icons/fa";
 
 const HomePage = () => {
