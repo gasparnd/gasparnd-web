@@ -7,28 +7,39 @@ const HomePage = () => {
       <section className="md:mt-24">
         <h1 className="text-5xl text-gray-100 font-bold">
           Hey there. I'm Gaspar Dolcemascolo
+          <br />
+          <span className="text-4xl text-customGray mt-8">
+            FrontEnd / Mobile Developer at{" "}
+            <a
+              className="whitespace-nowrap text-customGray bg-hover px-1 rounded-lg"
+              target="_blank"
+              href="https://www.cleveritgroup.com/"
+            >
+              CleverIt Group
+            </a>
+          </span>
         </h1>
-        <h2 className="text-4xl text-customGray mt-8">
-          FrontEnd Developer at{" "}
-          <a
-            className="text-customGray bg-hover px-1 rounded-lg"
-            target="_blank"
-            href="https://www.cleveritgroup.com/"
-          >
-            CleverIt Group
-          </a>
-        </h2>
+
         <div className="flex gap-4 align-self-start mt-8">
-          <a target="_blank" href="https://github.com/gasparnd">
+          <a
+            className="p-1 bg-hover rounded-lg"
+            target="_blank"
+            href="https://github.com/gasparnd"
+          >
             <FaGithub size="1.7rem" color="#888888" />
           </a>
           <a
+            className="p-1 bg-hover rounded-lg"
             target="_blank"
             href="https://www.linkedin.com/in/gaspardolcemascolo/"
           >
             <FaLinkedin size="1.7rem" color="#888888" />
           </a>
-          <a target="_blank" href="https://twitter.com/gasparnd">
+          <a
+            className="p-1 bg-hover rounded-lg"
+            target="_blank"
+            href="https://twitter.com/gasparnd"
+          >
             <FaTwitterSquare size="1.7rem" color="#888888" />
           </a>
         </div>
@@ -36,28 +47,17 @@ const HomePage = () => {
           <div>
             <p className="text-lg text-gray-100">
               <br /> I have been developing for the modern web since 2020. I
-              focus in Web technologies like React, Next, React Native and
-              GraphQL.
+              Focus in Web technologies like React.js, Next.js, GraphQL and the
+              mobile develop with React Native 💙.
               <br />
-              Not only work in FrontEnd, i have knowloge in BackEnd with{" "}
-              <span className="text-gray-50">
-                Node.Js, NestJs, Express and starting to learn Cyber Security in
-                my free time
-              </span>
-              . Currently i work as FrontEnd dev at{" "}
-              <a
-                className="underline "
-                target="_blank"
-                href="https://www.cleveritgroup.com/"
-              >
-                CleverIt Group
-              </a>
-              , in the Labs department, where we build experiments, own products
-              and StartUps. Also i work for the clients area.
+              Not only work in FrontEnd, i have knowloge in BackEnd with
+              Node.js, Nest.js, Express and JWT.
+              <br />
+              Always i try to go further and further learning about how to build
+              a better product for the users and code for the devopers (team
+              playing is better).
             </p>
           </div>
-
-          <div></div>
         </div>
       </section>
     </>

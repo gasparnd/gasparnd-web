@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React from "react";
+import { Footer } from "../Footer";
 
 interface IProps {
   title: string;
@@ -20,7 +21,10 @@ const Layout = (props: IProps) => {
         <meta content={description} />
       </Head>
       <div className="p-3 flex justify-center w-full min-h-screen bg-background antialiased">
-        <div className="md:w-3/4">{children}</div>
+        <div style={{ maxWidth: 640 }}>
+          <main>{children}</main>
+          <Footer />
+        </div>
       </div>
     </>
   );
