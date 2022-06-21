@@ -2,75 +2,65 @@ import React, { useState } from "react";
 import { FaGithub, FaLinkedin, FaTwitterSquare } from "react-icons/fa";
 
 const HomePage = () => {
-  const [longDescription, setLongDescription] = useState<boolean>(false);
   return (
-    <div className="p-3 bg-gray-50 h-screen flex items-center flex-col justify-center">
-      <div className="md:w-3/4">
-        <section className="">
-          <button
-            onClick={() => setLongDescription(!longDescription)}
-            className="bg-primary text-gray-50 rounded-md px-3 mb-3"
-          >
-            {longDescription ? "Short description" : "Long description"}
-          </button>
-          <h1 className="text-5xl font-bold">
-            Hey there. I'm Gaspar Dolcemascolo
-          </h1>
-          <h2 className="text-4xl mt-4">
-            FrontEnd Developer at{" "}
+    <>
+      <section className="md:mt-24">
+        <h1 className="text-5xl text-gray-100 font-bold">
+          Hey there. I'm Gaspar Dolcemascolo
+          <br />
+          <span className="text-4xl text-customGray mt-8">
+            FrontEnd / Mobile Developer at{" "}
             <a
-              className="underline text-primary"
+              className="whitespace-nowrap text-customGray bg-hover px-1 rounded-lg"
               target="_blank"
               href="https://www.cleveritgroup.com/"
             >
               CleverIt Group
             </a>
-          </h2>
-        </section>
-        {longDescription && (
-          <div className="mt-4">
-            <p className="text-lg">
-              Greate, i see you interested in my profile.
-              <br /> I have been developing for the modern web since 2020. I
-              focus in{" "}
-              <span className="bg-primary text-gray-50">
-                Web technologies like React, Next, React Native and GraphQL.
-              </span>{" "}
-              <br />
-              Not only work in FrontEnd, i have knowloge in BackEnd with{" "}
-              <span className="bg-primary text-gray-50">
-                Node.Js, NestJs, Express and Cloud services like Google Cloud
-                Platform
-              </span>
-              . Currently i work as FrontEnd dev at{" "}
-              <a
-                className="underline text-primary"
-                target="_blank"
-                href="https://www.cleveritgroup.com/"
-              >
-                CleverIt Group
-              </a>
-              , in the Labs department, where we build experiments, own products
-              and StartUps. Also i worked for the clients area.
-            </p>
-          </div>
-        )}
-        <section className="flex align-self-start mt-8">
-          <a target="_blank" href="https://github.com/gasparnd">
-            <FaGithub className="mr-4" size="2rem" color="#6a35ff" />
+          </span>
+        </h1>
+
+        <div className="flex gap-4 align-self-start mt-8">
+          <a
+            className="p-1 bg-hover rounded-lg"
+            target="_blank"
+            href="https://github.com/gasparnd"
+          >
+            <FaGithub size="1.7rem" color="#888888" />
           </a>
           <a
+            className="p-1 bg-hover rounded-lg"
             target="_blank"
             href="https://www.linkedin.com/in/gaspardolcemascolo/"
           >
-            <FaLinkedin className="mr-4" size="2rem" color="#6a35ff" />
+            <FaLinkedin size="1.7rem" color="#888888" />
           </a>
-          <a target="_blank" href="https://twitter.com/gasparnd">
-            <FaTwitterSquare className="mr-4" size="2rem" color="#6a35ff" />
+          <a
+            className="p-1 bg-hover rounded-lg"
+            target="_blank"
+            href="https://twitter.com/gasparnd"
+          >
+            <FaTwitterSquare size="1.7rem" color="#888888" />
           </a>
-        </section>
-      </div>
-    </div>
+        </div>
+        <div className="mt-16 flex">
+          <div>
+            <p className="text-lg text-gray-100">
+              <br /> I have been developing for the modern web since 2020. I
+              Focus in Web technologies like React.js, Next.js, GraphQL and the
+              mobile develop with React Native 💙.
+              <br />
+              Not only work in FrontEnd, i have knowloge in BackEnd with
+              Node.js, Nest.js, Express and JWT.
+              <br />
+              Always i try to go further and further learning about how to build
+              a better product for the users and code for the devopers (team
+              playing is better).
+            </p>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
