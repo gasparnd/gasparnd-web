@@ -5,10 +5,10 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    fontFamily: {
-      poppins: ["Poppins", "sans-serif"],
-    },
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
       colors: {
         primary: "#d1d63a",
         customGray: "#888888",
