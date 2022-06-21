@@ -5,13 +5,13 @@ const HomePage = () => {
   return (
     <>
       <section className="md:mt-24">
-        <h1 className="text-5xl text-gray-100 font-bold">
+        <h1 className="font-poppins text-5xl text-gray-100 font-bold">
           Hey there. I'm Gaspar Dolcemascolo
           <br />
-          <span className="text-4xl text-customGray mt-8">
+          <span className="font-poppins text-4xl text-customGray mt-8">
             FrontEnd / Mobile Developer at{" "}
             <a
-              className="whitespace-nowrap text-customGray bg-hover px-1 rounded-lg"
+              className="font-poppins whitespace-nowrap text-customGray bg-hover px-1 rounded-lg"
               target="_blank"
               href="https://www.cleveritgroup.com/"
             >
@@ -45,7 +45,7 @@ const HomePage = () => {
         </div>
         <div className="mt-16 flex">
           <div>
-            <p className="text-lg text-gray-100">
+            <p className="font-poppins text-lg text-gray-100">
               <br /> I have been developing for the modern web since 2020. I
               Focus in Web technologies like React.js, Next.js, GraphQL and the
               mobile develop with React Native 💙.
