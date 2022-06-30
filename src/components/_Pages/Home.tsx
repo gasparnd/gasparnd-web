@@ -54,7 +54,7 @@ const HomePage = () => {
               Node.js, Nest.js, Express and JWT.
               <br />
               Always i try to go further and further learning about how to build
-              a better product for the users and code for the devopers (team
+              a better product for the users and code for the developers (team
               playing is better).
             </p>
           </div>
