@@ -22,7 +22,7 @@ export const Footer = () => {
   return (
     <footer className="mt-32 ">
       <p className="font-poppins text-white text-lg">
-        Currently in Argentina (GMT-3) - {time}{" "}
+        Argentina (GMT-3) - {time}{" "}
       </p>
     </footer>
   );
