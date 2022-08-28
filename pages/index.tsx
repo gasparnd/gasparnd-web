@@ -52,7 +52,7 @@ const Home: NextPage = () => {
         </a>
         <a
           target="_blank"
-          href="https://www.twitter.com/gasparnd"
+          href="https://www.linkedin.com/in/gaspardolcemascolo/"
           rel="noreferrer"
           className="transition duration-700 hover:scale-125 hover:skew-y-3"
         >
