@@ -1,0 +1,176 @@
+---
+title: "Como subir archivos desde React Native con Expo"
+date: "2020-08-03"
+---
+
+Subir archivos puede llegar a ser un problema en especial cuando se hace desde una aplicación móvil, donde tenemos diferentes dispositivos, marcas y sistemas operativos.
+
+En esta ocasión te voy a mostrar cómo resolví la necesidad de subir videos hacia tu **Backend** desde una aplicación creada en **React Native con Expo**.
+
+# FrontEnd
+
+Primero vamos a crear una aplicación de **React Native** utilizando el **CLI de Expo** (o puedes seguir los pasos e integrarlo en tu proyecto, verás que es muy simple).
+
+```
+
+npm install --global expo-cli
+
+expo init upload-file-expo
+
+```
+
+En mi caso como va a ser una aplicación sencilla voy utilizar la configuración Blank con TypeScript.
+
+Una vez que tengamos nuestra aplicación vamos a instalar la siguiente dependencia. En mi caso voy a subir un video que esté en la galería del usuario, por lo que voy a necesitar instalar la librería [ImagePicker de expo](https://docs.expo.dev/versions/latest/sdk/imagepicker/).
+
+Ahora vamos a tener que añadir la librería a nuestro **app.json**
+
+```js showLineNumbers title="next.config.js"
+
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
+    ]
+  }
+}
+
+
+```
+
+Una vez tengamos este Set-Up inicial crearemos nuestros componentes o páginas donde vamos a implementar nuestra nueva funcionalidad.
+
+Mi aplicación va a ser bastante sencilla y se vera asi:
+
+Ahora vamos a crear una función que se ejecutará cuando se haga click en **Select video**, el propósito de este **onPress** va a ser solicitar al usuario permisos para acceder a su galería y una vez estos sean otorgados poder seleccionar un video.
+
+Aquí simplemente vamos a utilizar el metodo _**requestMediaLibraryPermissionsAsync**_ de **ExpoImagePicker**, esto nos devuelve una **Promesa** por lo que usare **async/await**
+
+Una vez que qué _**library.granted**_ sea **true** llamaremos a la función **searchVideo** para que el usuario pueda seleccionar un video de su galería.
+
+Aquí haremos uso del método _**launchImageLibraryAsync**_ el cual nos abrirá la librería del dispositivo y podremos seleccionar nuestro vídeo. Este método recibe un objeto de configuración al cual le indicaremos que tipo de archivo queremos seleccionar.
+
+Una vez que obtengamos una respuesta vamos a guardar la uri (esta es una url del video en el dispositivo) en un **state**.
+
+En mi app yo estoy utilizando la librería [VideoAV](https://docs.expo.dev/versions/v44.0.0/sdk/video/) de Expo para poder visualizar el video en la aplicación.
+
+```
+
+expo install expo-av
+
+```
+
+Para esto creare un componente que recibirá la uri del video a reproducir.
+
+```
+
+import React, { useRef, FC } from "react";
+import { View } from "react-native";
+import { Video as VideoPlayer } from "expo-av";
+
+const Video: FC<{ uri: string }> = ({ uri }) => {
+  const videoRef = useRef(null);
+
+  return (
+    <View>
+      <VideoPlayer
+        resizeMode="contain"
+        style={{ width: 300, height: 400 }}
+        ref={videoRef}
+        source={{ uri: uri }}
+        useNativeControls
+      />
+    </View>
+  );
+};
+
+export default Video;
+
+```
+
+Sumado esto le permite al usuario seleccionar otro video y finalmente subirlo.
+
+Ahora para poder subir el video vamos a requerir utilizar la librería [FileSystem de Expo](https://docs.expo.dev/versions/v44.0.0/sdk/filesystem/) esta nos permitirá, entre otras cosas, subir archivos con su método _**uploadAsync**_. Para ello crearemos una función para esta acción.
+
+```
+
+expo install expo-file-system
+
+```
+
+Este método requiere **3 parámetros**, el primero es la **url de tu api**, el segundo **la uri del video** que deseas subir y por último un **objeto de configuración**. A este último le tendremos que agregar el método **HTTP (POST)**, el tipo de subida que será **MULTIPART**, esto quiere decir que va a subir el archivo por partes (**Buffer**), y el **fieldName** que será el nombre que espera el backend (**recomiendo tenerlo en ambas partes como file**).
+
+```
+
+const handelUploade = async (uri: string) => {
+    try {
+      const headers = {
+        Accept: "application/json",
+        "Content-Type": "multipart/form-data",
+      };
+
+      const res = await FileSystem.uploadAsync(
+        "https://your-api.com/uploadVideo",
+        uri,
+        {
+          httpMethod: "POST",
+          uploadType: FileSystemUploadType.MULTIPART,
+          fieldName: "file",
+          headers: headers,
+        }
+      );
+
+      if (res) {
+        return res;
+      }
+    } catch (error) {
+      Alert.alert("Somthing is wrong");
+    }
+  };
+
+```
+
+Y eso sería todo por el lado del FrontEnd.
+
+**Codigo completo**
+
+**Backend**
+
+Pequeño disclaimer antes de continuar, voy a crear un servicio en **Nest.js** donde implementare el **File upload** con **MULTIPART** según su [documentación](https://docs.nestjs.com/techniques/file-upload), pero también está su equivalencia en otros lenguajes y frameworks como **Spring Boot**.
+
+Primero crearemos una aplicación de Nest con su CLI.
+
+```
+
+npm i -g @nestjs/cli
+nest new project-name
+
+```
+
+Una vez creado el proyecto, vamos a instalar los **types para typescript**, en este caso **Nest ya contiene** por defecto el **FileInterceptor**
+
+```
+
+npm i -D @types/multer
+
+```
+
+Ahora **importamos** las **dependencias** en el código, para efectos prácticos de este tutorial voy a seguir con todo en el SetUp en el mismo Controller.
+
+Implementaremos el **FileInterceptor** en un **POST** que será nuestro endpoint para subir archivos.
+
+**File**, cómo recuerdas, es el objeto que nosotros estaremos esperando con nuestro **Buffer** por lo que debe ser el **mismo nombre** que configuramos en nuestra **React Native App**.
+
+En mi caso yo solo guardare el archivo en mi computadora ya que es un ejemplo, pero podrias manipularlo según tu necesidad
+
+Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
+
+**Conclusiones**
+
+Ahora ya sabes como puedes subir videos desde tu app móvil de Expo, pero este ejemplo puede ser aplicado también en fotos o cualquier otro tipo de archivo.
+Te recomiendo limitar el tamaño de los videos ya que la subida de archivos depende del dispositivo del usuario y su internet en su mayoría, esto puede tardar un tiempo considerable e interferir en la experiencia del usuario.

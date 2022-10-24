@@ -16,7 +16,7 @@ module.exports = {
         darkBackground: "#111",
         lightBackground: "#f4f4f4",
         border: "#4a4a4a",
-        green: "#00ed64",
+        primary: "#00ed64",
       },
     },
   },

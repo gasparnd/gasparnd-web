@@ -18,8 +18,8 @@ const Layaut = ({ children }: any) => {
         </div>
       </header> */}
       <main
-        style={{ height: "100vh" }}
-        className="m-0Auto w-maxWidth flex items-center h-full"
+        style={{ minHeight: "100vh" }}
+        className="m-0Auto flex items-center h-full px-3"
       >
         {children}
       </main>
