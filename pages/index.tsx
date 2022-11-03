@@ -4,9 +4,9 @@ import { BsGithub, BsTwitter, BsLinkedin } from "react-icons/bs";
 import { allPosts } from "contentlayer/generated";
 import { pick } from "@contentlayer/client";
 
-import { PostCard } from "components/PostCard";
+import { PostCard } from "components";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ posts }: any) => {
   return (
     <div>
       <Head>
@@ -30,6 +30,32 @@ const Home: NextPage = () => {
             CleverIt Group
           </a>
         </h2>
+        <div className="flex gap-6 my-4">
+          <a
+            target="_blank"
+            href="https://www.github.com/gasparnd"
+            rel="noreferrer"
+            className="transition text-primary duration-700 hover:scale-125 hover:skew-y-3"
+          >
+            <BsGithub size={25} />
+          </a>
+          <a
+            target="_blank"
+            href="https://www.twitter.com/gasparnd"
+            rel="noreferrer"
+            className="transition text-primary duration-700 hover:scale-125 hover:skew-y-3"
+          >
+            <BsTwitter size={25} />
+          </a>
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/gaspardolcemascolo/"
+            rel="noreferrer"
+            className="transition text-primary duration-700 hover:scale-125 hover:skew-y-3"
+          >
+            <BsLinkedin size={25} />
+          </a>
+        </div>
         <p>
           I am a fullstack developer focus in frontend and mobile. My main stack
           is React.js, React Native, Next.js, GraphQL, Nest.js...
@@ -38,54 +64,25 @@ const Home: NextPage = () => {
           I love learning new thing that can improve my work and the product we
           build.
         </p>
-        <div className="flex gap-6 mt-4">
-          <a
-            target="_blank"
-            href="https://www.github.com/gasparnd"
-            rel="noreferrer"
-            className="transition duration-700 hover:scale-125 hover:skew-y-3"
-          >
-            <BsGithub size={30} />
-          </a>
-          <a
-            target="_blank"
-            href="https://www.twitter.com/gasparnd"
-            rel="noreferrer"
-            className="transition duration-700 hover:scale-125 hover:skew-y-3"
-          >
-            <BsTwitter size={30} />
-          </a>
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/gaspardolcemascolo/"
-            rel="noreferrer"
-            className="transition duration-700 hover:scale-125 hover:skew-y-3"
-          >
-            <BsLinkedin size={30} />
-          </a>
-        </div>
       </section>
 
-      {/* <section className="mt-8">
+      <section className="mt-8">
         <ol>
-          {posts.map((p: any) => (
-            <PostCard
-              key={p}
-              slug={p.slug}
-              title={p.title}
-              description={p.date}
-            />
+          {posts?.map((p: any) => (
+            <li key={p}>
+              <PostCard slug={p.slug} title={p.title} description={p.date} />
+            </li>
           ))}
         </ol>
-      </section> */}
+      </section>
     </div>
   );
 };
 
-// export async function getStaticProps() {
-//   const posts = allPosts.map((post) => pick(post, ["title", "date", "slug"]));
+export async function getStaticProps() {
+  const posts = allPosts.map((post) => pick(post, ["title", "date", "slug"]));
 
-//   return { props: { posts } };
-// }
+  return { props: { posts } };
+}
 
 export default Home;

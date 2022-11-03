@@ -1,4 +1,5 @@
 @tailwind base;
+@import "./syntax-highlighting.css";
 @tailwind components;
 @tailwind utilities;
 
@@ -7,7 +8,7 @@
     color-scheme: dark;
   }
   body {
-    color: #f4f4f4;
+    color: #e5deba;
     background: #1a1a1a;
   }
 }

@@ -13,10 +13,10 @@ module.exports = {
         "0Auto": "0 auto",
       },
       colors: {
-        darkBackground: "#111",
+        darkBackground: "#333333",
         lightBackground: "#f4f4f4",
         border: "#4a4a4a",
-        primary: "#00ed64",
+        primary: "#ace1dc",
       },
     },
   },
