@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        maxWidth: "900px",
+        maxWidth: "710px",
       },
       margin: {
         "0Auto": "0 auto",

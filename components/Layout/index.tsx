@@ -6,8 +6,8 @@ export const Layout = ({ children }: any) => {
   return (
     <div className="max-width-screen">
       <main
-        style={{ minHeight: "100vh", width: 710, margin: "0 auto" }}
-        className=" h-full px-4 py-24"
+        style={{ minHeight: "100vh", margin: "0 auto" }}
+        className="w-full md:w-maxWidth h-full px-4 py-24"
       >
         {children}
       </main>
