@@ -9,8 +9,8 @@ interface IPostCardProps {
 
 export const PostCard: FC<IPostCardProps> = ({ title, description, slug }) => {
   return (
-    <Link className="" href={`/posts/${slug}`}>
-      <article className="w-full group hover:bg-primary hover:[h3]:text-black border-2 border-primary cursor-pointer rounded-lg p-4 mb-4 w-max">
+    <Link href={`/posts/${slug}`}>
+      <article className="group hover:bg-primary border-2 border-primary cursor-pointer rounded-lg p-4 mb-4 ">
         <a>
           <h3 className="group-hover:text-black">{title}</h3>
           <p className="group-hover:text-black">{description}</p>
