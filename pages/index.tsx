@@ -58,10 +58,10 @@ const Home: NextPage = ({ posts }: any) => {
         </div>
         <p>
           I am a fullstack developer focus in frontend and mobile. My main stack
-          is React.js, React Native, Next.js, GraphQL, Nest.js...
+          is React.js, React Native, Next.js, GraphQL, Nest.js, Tailwindcss...
         </p>
         <p>
-          I love learning new thing that can improve my work and the product we
+          I love learning new things that can improve my work and the product we
           build.
         </p>
       </section>
