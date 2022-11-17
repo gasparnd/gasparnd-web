@@ -4,7 +4,7 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import Link from "next/link";
 import { BsArrowLeftShort } from "react-icons/bs";
 
-import { MDXComponents } from "components";
+import { MDXComponents, SocialLinks } from "components";
 
 export default function Post({ post }: any) {
   const MDXContent = useMDXComponent(post.body.code);
@@ -32,6 +32,11 @@ export default function Post({ post }: any) {
       <p className="mb-8 text-primary">{post.date}</p>
 
       <MDXContent components={{ ...MDXComponents }} />
+
+      <footer className=" flex flex-col items-center p-8 mt-8">
+        <p className="mb-4 text-xl">👋 Say Hi!</p>
+        <SocialLinks />
+      </footer>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { BsGithub, BsTwitter, BsLinkedin } from "react-icons/bs";
 import { allPosts } from "contentlayer/generated";
 import { pick } from "@contentlayer/client";
 
-import { PostCard } from "components";
+import { PostCard, SocialLinks } from "components";
 
 const Home: NextPage = ({ posts }: any) => {
   return (
@@ -30,32 +30,7 @@ const Home: NextPage = ({ posts }: any) => {
             CleverIt Group
           </a>
         </h2>
-        <div className="flex gap-6 my-4">
-          <a
-            target="_blank"
-            href="https://www.github.com/gasparnd"
-            rel="noreferrer"
-            className="transition text-primary duration-700 hover:scale-125 hover:skew-y-3"
-          >
-            <BsGithub size={25} />
-          </a>
-          <a
-            target="_blank"
-            href="https://www.twitter.com/gasparnd"
-            rel="noreferrer"
-            className="transition text-primary duration-700 hover:scale-125 hover:skew-y-3"
-          >
-            <BsTwitter size={25} />
-          </a>
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/gaspardolcemascolo/"
-            rel="noreferrer"
-            className="transition text-primary duration-700 hover:scale-125 hover:skew-y-3"
-          >
-            <BsLinkedin size={25} />
-          </a>
-        </div>
+        <SocialLinks />
         <p>
           I am a fullstack developer focus in frontend and mobile. My main stack
           is React.js, React Native, Next.js, GraphQL, Nest.js, Tailwindcss...
