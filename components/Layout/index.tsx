@@ -1,6 +1,6 @@
-import React, { FC, useState } from "react";
+import React, { FC, PropsWithChildren, useState } from "react";
 
-export const Layout: FC = ({ children }: any) => {
+export const Layout: FC<PropsWithChildren> = ({ children }) => {
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
 
   return (
