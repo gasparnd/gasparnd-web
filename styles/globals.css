@@ -3,12 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: #e5deba;
-    background: #1a1a1a;
-  }
+body {
+  color: #e5deba;
+  background: #1a1a1a;
 }
