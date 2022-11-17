@@ -13,16 +13,21 @@ export const MDXComponents = {
   ),
   p: (props: any) => <p className="font-light" {...props} />,
   strong: (props: any) => <strong className="font-extrabold" {...props} />,
-  a: (props: any) => {
-    return (
-      <Link
-        className="underline pointer hover:text-primary italic"
-        href={props.href}
-      >
-        <a target="_blank" className="underline pointer text-primary italic">
-          {props.children}
-        </a>
-      </Link>
-    );
-  },
+  a: (props: any) => (
+    <Link
+      className="underline pointer hover:text-primary italic"
+      href={props.href}
+    >
+      <a target="_blank" className="underline pointer text-primary italic">
+        {props.children}
+      </a>
+    </Link>
+  ),
+
+  ul: (props: any) => (
+    <div className="ml-6">
+      <ul className="list-disc" {...props} />
+    </div>
+  ),
+  img: (props: any) => <img className="my-3" {...props} />,
 };
