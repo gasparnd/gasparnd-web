@@ -48,7 +48,7 @@ Una vez tengamos este Set-Up inicial crearemos nuestros componentes o páginas d
 
 <br />
 
-Creamos el **handle** para nuestro boton **Select video**, el propósito de este **onPress** sera solicitar al usuario permisos para acceder a su galería y una vez estos sean otorgados poder seleccionar un video.
+Creamos el **handle** para nuestro boton **Select video**, el propósito de este **onPress** sera solicitar al usuario permisos para acceder a su galería y una vez estos sean otorgados podremos seleccionar un video.
 
 ```js title="./App.tsx"
 import React from "react";
@@ -292,7 +292,7 @@ const handelUploade = async (uri: string) => {
 };
 ```
 
-Tambien es necesario que modifiquemos la **URI** dependiendo el sistema operativo, si esto en la **Android** el metodo no funcionara.
+Tambien es necesario que modifiquemos la **URI** dependiendo el sistema operativo, si es **Android** el metodo no funcionara.
 
 <br />Y eso sería todo por el lado del FrontEnd.
 

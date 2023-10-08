@@ -19,7 +19,7 @@ Te comente que el Engine transforma nuestro código JavaScript a Bytecode para q
 
 ### Entorno Global
 
-Una vez que llega un archivo de JavaScript llega al navegador y es ejecutado, el engine generará un entorno global que hace tres cosas muy importantes:
+Una vez que llega un archivo de JavaScript al navegador y es ejecutado, el engine generará un entorno global que hace tres cosas muy importantes:
 
 <br />
 
@@ -54,7 +54,7 @@ Una vez generado este contexto global comienza el **contexto de ejecución** (Ex
 - Interprete
 - Profiler y compiler
 
-![Tur por el Abstract syntaxt tree](/posts/understanding-the-javascript-engine/engine-roud-map.png)
+![Tour por el Abstract syntaxt tree](/posts/understanding-the-javascript-engine/engine-roud-map.png)
 
 <br />
 
@@ -137,12 +137,6 @@ o const_**. Mira el siguiente código:
 console.log(name); // ReferenceError: Cannot access 'name' before initialization
 
 let name = "Gaspar";
-```
-
-```js
-console.log(name); // ReferenceError: Cannot access 'name' before initialization
-
-const name = "Gaspar";
 ```
 
 Como puedes ver si utilizamos **_let o const_** para definir nuestras variables evitaremos el **_Hoisting_** y nuestras variables no se inicializará como **_undefined_**.
