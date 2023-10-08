@@ -24,10 +24,19 @@ const Home: NextPage = ({ posts }: any) => {
           <a
             className="hover:text-primary underline"
             target="_blank"
-            href="https://www.cleveritgroup.com/"
+            href="https://www.flexit.cl/"
             rel="noreferrer"
           >
-            CleverIt Group
+            Flexit
+          </a>{" "}
+          by{" "}
+          <a
+            className="hover:text-primary underline"
+            target="_blank"
+            href="https://www.falabella.com/"
+            rel="noreferrer"
+          >
+            Falabella
           </a>
         </h2>
         <SocialLinks />
