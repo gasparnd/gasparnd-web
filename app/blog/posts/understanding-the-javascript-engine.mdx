@@ -1,0 +1,159 @@
+---
+title: "Entendiendo el motor de JavaScript"
+publishedAt: "2021-09-11"
+summary: "In the ever-evolving landscape of software development, the debate between dynamic and static typing continues to be a hot topic."
+---
+
+JavaScript es uno de los lenguajes más populares y el favorito para la Web. Los Devs no tenemos que lidiar con compiladores para poder correr nuestro código
+JavaScript. El navegador compila en tiempo de ejecución, pasando de código a Bytecode.
+En este post me enfocaré en **V8 Engine**, desarrollado por **Google** y basado en
+**Chromium**, este es el mejor motor que existe y es utilizado por **Browsers** como
+**Chrome, Edge, Brave**, entre otros.
+
+<br />
+
+## El V8 Engine
+
+Te comente que el Engine transforma nuestro código JavaScript a Bytecode para que el Browser lo pueda interpretar.
+
+<br />
+
+### Entorno Global
+
+Una vez que llega un archivo de JavaScript al navegador y es ejecutado, el engine generará un entorno global que hace tres cosas muy importantes:
+
+<br />
+
+- Objeto global llamado **window**. Si vamos a la consola podemos ver que
+  window nos devuelve la **API** con todos los métodos que tenemos disponibles.
+
+  ![gist of window on console](/posts/understanding-the-javascript-engine/window.gif)
+
+  Por ejemplo podríamos ejecutar **_window.console.log("Hello Chrome V8);_** y
+  exactamente exactamente igual.
+
+  ![window.console.log on console](/posts/understanding-the-javascript-engine/window.console.log.gif)
+
+- Generará un contexto llamado this. En un contexto global **this** es igual a
+  **window**.
+
+```js
+this === window;
+// true
+```
+
+- Ambiente de ejecución.
+
+<br />
+
+Una vez generado este contexto global comienza el **contexto de ejecución** (Execution context) donde corre el código de JavaScript utilizando un **Stack de tareas**, a continuación el motor ejecutara los siguientes procesos:
+
+<br />
+
+- Parser
+- AST
+- Interprete
+- Profiler y compiler
+
+![Tour por el Abstract syntaxt tree](/posts/understanding-the-javascript-engine/engine-roud-map.png)
+
+<br />
+
+### Parser
+
+Se genera un parseo del documento completo mediante palabras claves como **function, var, etc**.
+Existen dos tipos de parsers, el parser y el pre-parser. Con la finalidad de reducir el tiempo de carga.
+
+<br />
+El **parser** se encarga del código que se debe correr en el momento y el **pre-parser**
+aquel que se utilizará después. Con ejecutar después me refiero a tareas que se ejecutarán,
+por ejemplo, luego de una acción del usuario (click en un botón).
+
+<br />
+
+### AST
+
+El Abstract syntaxt tree (AST) se crea a partir de los nodos que genera el parser y es una estructura de árbol que representa tu código sintácticamente. Podemos utilizar la página [AST Explorer](https://astexplorer.net/) y ver como este árbol es generado.
+![Tur por el Abstract syntaxt tree](/posts/understanding-the-javascript-engine/ast-explorer.gif)
+
+<br />
+
+También podríamos generar JSX y ver cómo responde el árbol.
+
+<br />
+
+Una vez que el **Bytecode** es generado el **AST** es eliminado para liberar memoria.
+
+### Profiler y compiler
+
+El **_profiler_** monitorea el código para **optimizarlo**. El **_compiler_** optimiza ese código y genera **_machine code_** (lenguaje binario). En esta etapa, y por la intención de optimizar el código, también genera errores como el **_Hoisting_**.
+
+<br />
+
+Analiza el siguiente código:
+
+```js
+console.log(name); // undefined
+
+var name = "Gaspar";
+
+console.log(name); // "Gaspar"
+```
+
+En el primer **_console.log_** name es **_undefined_**, esto porque está haciendo referencia a una variable que no ha sido declarada. El motor de JavaScript sabrá que una variable **_name_** va a existir por lo que la declarara antes y le asignará **_undefined_**. Es como hacer lo siguiente:
+
+```js
+var name = undefined;
+
+console.log(name); // undefined
+
+name = "Gaspar";
+
+console.log(name); // "Gaspar"
+```
+
+Algo parecido ocurre con **_function_**, dónde podemos llamar una funcion antes de ser declarada y no necesariamente después:
+
+```js
+hello("Gaspar"); // "Hello Gaspar"
+
+function hello(name) {
+  console.log(`Hello ${name}`);
+}
+
+hello("Pep"); // "Hello Pep"
+```
+
+A esto se le denomina **_Hoisting_**.
+
+<br />
+
+**Take it easy**. El código **permanecerá igual**, es solo una interpretación del engine de JavaScript que intenta **optimizar** nuestro código. Pero esto puede causar errores y resultados no esperados ya que el motor declara las variables y funciones en un **scope superior**, Global o de función.
+
+<br />
+Esto lo podremos contrarrestar si en lugar de utilizar **_var_** utilizamos **_let
+o const_**. Mira el siguiente código:
+
+```js
+console.log(name); // ReferenceError: Cannot access 'name' before initialization
+
+let name = "Gaspar";
+```
+
+Como puedes ver si utilizamos **_let o const_** para definir nuestras variables evitaremos el **_Hoisting_** y nuestras variables no se inicializará como **_undefined_**.
+
+Podemos evitar el _Hoisting_ en las **funciones** si utilizamos las **_arrow functions_**:
+
+```js
+hello("Gaspar"); // ReferenceError: hello is not defined
+
+const hello = (name) => {
+  console.log(`Hello ${name}`);
+};
+```
+
+<br />
+
+## Conclusiones
+
+Ahora ya sabes el camino que tiene que seguir nuestro archivo **JavaScript** para poder ser interpretado y ejecutado dentro del navegador, también ya sabes que es el **Hoisting** y cómo **evitarlo**. Aún hay muchas cosas dentro del funcionamiento de **_Chrome V8_**, esto solo fue una breve introducción pero eres libre de revisar la [documentación de V8](https://v8.dev/) y también el [GitHub de V8](https://github.com/v8/v8), es open source.
